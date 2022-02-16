@@ -1,6 +1,6 @@
 package com.brunoproject.ecommerce.dao;
 
-import com.brunoproject.ecommerce.entity.ProductCategory;
+import com.brunoproject.ecommerce.entities.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

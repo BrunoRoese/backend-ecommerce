@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.entity;
+package com.brunoproject.ecommerce.entities;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,9 +14,9 @@ import java.util.Date;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private ProductCategory productCategory;
