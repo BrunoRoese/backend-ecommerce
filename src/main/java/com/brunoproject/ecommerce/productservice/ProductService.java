@@ -6,6 +6,7 @@ import com.brunoproject.ecommerce.productexceptions.ProductNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,13 +26,29 @@ public class ProductService {
     }
 
     public Product getProduct(Long id) {
-        List<Product> products;
-
-        products = productRepository.findAll();
-
-        return products.stream()
+        return productRepository.findAll().stream()
                 .filter(product -> id.equals(product.getId()))
                 .findAny()
                 .orElseThrow(ProductNotFoundException::new);
+    }
+
+    public Product createProduct(Product product) {
+        return productRepository.save(product);
+    }
+
+    public Product updateProduct(Long id) {
+        Product productBeingUpdated = productRepository.findAll().stream()
+                .filter(product -> id.equals(product.getId()))
+                .findAny()
+                .orElseThrow(ProductNotFoundException::new);
+
+    }
+
+    public void deleteProduct(Long id) {
+        if(productRepository.existsById(id)) {
+            productRepository.deleteById(id);
+        } else {
+            throw new ProductNotFoundException();
+        }
     }
 }
