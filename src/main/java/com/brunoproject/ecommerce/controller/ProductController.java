@@ -6,7 +6,6 @@ import com.brunoproject.ecommerce.productservice.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/product")
@@ -38,12 +37,17 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public Product updateProduct(@PathVariable("id") Long id) {
-        return productService.updateProduct(id);
+    public void updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
+        productService.updateProduct(id, product);
     }
 
-    @DeleteMapping()
-    public void deleteProduct(@RequestBody Long id) {
+    @PatchMapping("/{id}")
+    public void toggleActivationProduct(@PathVariable("id") Long id) {
+        productService.toggleActivationProduct(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
     }
 }
