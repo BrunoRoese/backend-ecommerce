@@ -35,7 +35,7 @@ public class ProductService {
     public void updateProduct(Long id, Product informationToUpdate) {
         Product productBeingUpdated = verifyIfProductExists(id);
 
-        productRepository.save(setProductProperties(productBeingUpdated, informationToUpdate));
+        productRepository.save(saveProductWithNewValues(productBeingUpdated, informationToUpdate));
     }
 
     public void toggleActivationProduct(Long id) {
@@ -61,7 +61,7 @@ public class ProductService {
                 .orElseThrow(ProductNotFoundException::new);
     }
 
-    private Product setProductProperties(Product productBeingUpdated, Product informationToUpdate) {
+    private Product saveProductWithNewValues(Product productBeingUpdated, Product informationToUpdate) {
         productBeingUpdated.setProductCategory(informationToUpdate.getProductCategory());
         productBeingUpdated.setSku(informationToUpdate.getSku());
         productBeingUpdated.setName(informationToUpdate.getName());
