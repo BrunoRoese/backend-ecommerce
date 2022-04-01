@@ -8,6 +8,6 @@ Used SpringBoot and Maven
 MySql for data base
 Hamcrest, Junit and Mockito for unit testing
 
-<h3>Next steps:</h3> 
-  Get Books
+<h3>Next step:</h3> 
+  Create controller based on product category
   
