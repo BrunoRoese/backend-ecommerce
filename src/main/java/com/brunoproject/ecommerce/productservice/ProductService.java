@@ -2,26 +2,31 @@ package com.brunoproject.ecommerce.productservice;
 
 import com.brunoproject.ecommerce.dao.ProductRepository;
 import com.brunoproject.ecommerce.entities.Product;
+import com.brunoproject.ecommerce.productexceptions.ProductListIsEmptyException;
 import com.brunoproject.ecommerce.productexceptions.ProductNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
 @Service
 public class ProductService {
 
-    private ProductRepository productRepository;
-
-    public ProductService(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private final ProductRepository productRepository;
 
     public List<Product> getAllActiveProducts() {
-         return productRepository.findAll()
+         var productList = productRepository.findAll()
                  .stream()
                  .filter(Product::isActive)
                  .collect(Collectors.toList());
+
+         if (productList.isEmpty()) {
+             throw new ProductListIsEmptyException();
+         }
+
+         return productList;
     }
 
     public Product getProduct(Long id) {
