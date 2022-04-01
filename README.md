@@ -8,3 +8,5 @@ Technologies used:
 Spring
 MySql
 Maven
+
+<h2>I'm using main as a staple version, all my work is in the branch version1.0</h2>
