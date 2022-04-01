@@ -4,6 +4,6 @@ Started to implement a fullstack project based on the course "Full Stack: Angula
 
 Still on version 1.0
 
-Used Spring and Maven
+Used SpringBoot and Maven
 MySql for data base
 Hamcrest, Junit and Mockito for unit testing
