@@ -12,6 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.mockito.BDDMockito.*;
 
 import java.util.List;
 
@@ -29,16 +30,17 @@ public class ProductServiceTest {
         var product = mock(Product.class);
         var listOfProducts = List.of(product);
 
-        when(productRepository.findAll()).thenReturn(listOfProducts);
-        when(product.isActive()).thenReturn(true);
+        given(productRepository.findAll()).willReturn(listOfProducts);
+        given(product.isActive()).willReturn(true);
 
         List<Product> result = productService.getAllActiveProducts();
 
+        verify(productRepository).findAll();
         assertEquals(result, listOfProducts);
     }
 
     @Test
-    public void shouldReturnOneProductGivenAValidId() {
+    public void shouldReturnAProductGivenAValidId() {
         var product = mock(Product.class);
         var listOfAllProducts = List.of(product);
 
@@ -47,6 +49,7 @@ public class ProductServiceTest {
 
         var result = productService.getProduct(1L);
 
+        verify(productRepository).findAll();
         assertEquals(result, product);
     }
 
@@ -70,17 +73,11 @@ public class ProductServiceTest {
     public void shouldSaveProduct() {
         var product = mock(Product.class);
 
-        when(productRepository.save(product)).thenReturn(product);
+        given(productRepository.save(product)).willReturn(product);
 
         var result = productService.createProduct(product);
 
+        verify(productRepository).save(product);
         assertEquals(product, result);
-    }
-
-    @Test
-    public void shouldUpdateProduct() {
-        var product = mock(Product.class);
-
-
     }
 }
