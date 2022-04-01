@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productRepository;
+    private final ProductUpdater productUpdater;
 
     public List<Product> getAllActiveProducts() {
          var productList = productRepository.findAll()
@@ -40,7 +41,7 @@ public class ProductService {
     public void updateProduct(Long id, Product informationToUpdate) {
         Product productBeingUpdated = verifyIfProductExists(id);
 
-        productRepository.save(saveProductWithNewValues(productBeingUpdated, informationToUpdate));
+        productRepository.save(productUpdater.saveProductWithNewValues(productBeingUpdated, informationToUpdate));
     }
 
     public void toggleActivationProduct(Long id) {
@@ -64,18 +65,5 @@ public class ProductService {
                 .filter(productBeingCompared -> id.equals(productBeingCompared.getId()))
                 .findAny()
                 .orElseThrow(ProductNotFoundException::new);
-    }
-
-    private Product saveProductWithNewValues(Product productBeingUpdated, Product informationToUpdate) {
-        productBeingUpdated.setProductCategory(informationToUpdate.getProductCategory());
-        productBeingUpdated.setSku(informationToUpdate.getSku());
-        productBeingUpdated.setName(informationToUpdate.getName());
-        productBeingUpdated.setDescription(informationToUpdate.getDescription());
-        productBeingUpdated.setUnitPrice(informationToUpdate.getUnitPrice());
-        productBeingUpdated.setImageUrl(informationToUpdate.getImageUrl());
-        productBeingUpdated.setActive(informationToUpdate.isActive());
-        productBeingUpdated.setUnitsInStock(informationToUpdate.getUnitsInStock());
-
-        return productBeingUpdated;
     }
 }
