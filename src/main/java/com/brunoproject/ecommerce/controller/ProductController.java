@@ -1,39 +1,38 @@
 package com.brunoproject.ecommerce.controller;
 
+import com.brunoproject.ecommerce.converter.ProductConverter;
 import com.brunoproject.ecommerce.entities.Product;
-import com.brunoproject.ecommerce.productexceptions.ProductListIsEmptyException;
 import com.brunoproject.ecommerce.productservice.ProductService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
-@RequestMapping("/product")
+@RequestMapping("api/v1/product")
 public class ProductController {
 
-    private ProductService productService;
+    private final ProductService productService;
+    private final ProductConverter productConverter;
 
-    public ProductController(ProductService productService){
-        this.productService = productService;
-    }
+    @GetMapping("/active")
+    public List<ProductDto> getAllProducts() {
+        var products = productService.getAllActiveProducts();
 
-    @GetMapping()
-    public List<Product> getAllProducts() {
-        try {
-            return productService.getAllActiveProducts();
-        } catch(ProductListIsEmptyException e){
-            throw new ProductListIsEmptyException();
-        }
+        return productConverter.convertListOfProducts(products);
     }
 
     @GetMapping("/{id}")
-    public Product getProduct(@PathVariable("id") Long id) {
-        return productService.getProduct(id);
+    public ProductDto getProduct(@PathVariable("id") Long id) {
+        var product = productService.getProduct(id);
+
+        return productConverter.convertSingleProduct(product);
     }
 
     @PostMapping()
-    public Product createProduct(@RequestBody Product product) {
-        return productService.createProduct(product);
+    public void createProduct(@RequestBody Product product) {
+        productService.createProduct(product);
     }
 
     @PutMapping("/{id}")
