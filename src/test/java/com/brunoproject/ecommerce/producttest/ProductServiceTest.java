@@ -4,8 +4,10 @@ import com.brunoproject.ecommerce.dao.ProductRepository;
 import com.brunoproject.ecommerce.entities.Product;
 import com.brunoproject.ecommerce.product.exceptions.ProductNotFoundException;
 import com.brunoproject.ecommerce.product.service.ProductService;
+import com.brunoproject.ecommerce.product.service.ProductUpdater;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.io.TempDir;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -24,6 +26,8 @@ public class ProductServiceTest {
 
     @Mock
     private ProductRepository productRepository;
+    @Mock
+    private ProductUpdater productUpdater;
 
     @Test
     public void shouldReturnTheCompleteListOfActiveProducts() {
@@ -79,5 +83,23 @@ public class ProductServiceTest {
 
         verify(productRepository).save(product);
         assertEquals(product, result);
+    }
+
+    @Test
+    public void shouldUpdateProduct(){
+        var product = mock(Product.class);
+        var listOfProducts = List.of(product);
+        var informationToUpdateProduct = mock(Product.class);
+
+        given(product.getId()).willReturn(1L);
+        given(productRepository.findAll()).willReturn(listOfProducts);
+        given(productUpdater.saveProductWithNewValues(product, informationToUpdateProduct)).willReturn(informationToUpdateProduct);
+        given(productRepository.save(informationToUpdateProduct)).willReturn(informationToUpdateProduct);
+
+        var result = productService.updateProduct(1L, informationToUpdateProduct);
+
+        verify(productUpdater).saveProductWithNewValues(product, informationToUpdateProduct);
+        verify(productRepository).findAll();
+        assertEquals(informationToUpdateProduct, result);
     }
 }
