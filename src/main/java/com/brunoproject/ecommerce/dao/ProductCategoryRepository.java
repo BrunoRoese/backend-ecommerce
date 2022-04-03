@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.product.productdao;
+package com.brunoproject.ecommerce.dao;
 
 import com.brunoproject.ecommerce.entities.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,11 +1,13 @@
-package com.brunoproject.ecommerce.product.productconverter;
+package com.brunoproject.ecommerce.converter;
 
-import com.brunoproject.ecommerce.product.productcontroller.ProductDto;
 import com.brunoproject.ecommerce.entities.Product;
+import org.springframework.data.convert.WritingConverter;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class ProductConverter {
 
     public List<ProductDto> convertListOfProducts(List<Product> productList) {

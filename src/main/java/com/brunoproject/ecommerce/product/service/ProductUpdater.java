@@ -1,7 +1,9 @@
-package com.brunoproject.ecommerce.product.productservice;
+package com.brunoproject.ecommerce.product.service;
 
 import com.brunoproject.ecommerce.entities.Product;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductUpdater {
 
     public Product saveProductWithNewValues(Product productBeingUpdated, Product informationToUpdate) {

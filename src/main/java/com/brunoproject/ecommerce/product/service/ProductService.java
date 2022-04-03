@@ -1,9 +1,9 @@
-package com.brunoproject.ecommerce.product.productservice;
+package com.brunoproject.ecommerce.product.service;
 
-import com.brunoproject.ecommerce.product.productdao.ProductRepository;
+import com.brunoproject.ecommerce.dao.ProductRepository;
 import com.brunoproject.ecommerce.entities.Product;
-import com.brunoproject.ecommerce.product.productexceptions.ProductListIsEmptyException;
-import com.brunoproject.ecommerce.product.productexceptions.ProductNotFoundException;
+import com.brunoproject.ecommerce.product.exceptions.ProductListIsEmptyException;
+import com.brunoproject.ecommerce.product.exceptions.ProductNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
