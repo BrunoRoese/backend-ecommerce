@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.productservice;
+package com.brunoproject.ecommerce.product.productservice;
 
 import com.brunoproject.ecommerce.entities.Product;
 

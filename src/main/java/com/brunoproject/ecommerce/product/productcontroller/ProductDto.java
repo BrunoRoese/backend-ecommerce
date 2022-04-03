@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.controller;
+package com.brunoproject.ecommerce.product.productcontroller;
 
 import com.brunoproject.ecommerce.entities.ProductCategory;
 import lombok.Data;

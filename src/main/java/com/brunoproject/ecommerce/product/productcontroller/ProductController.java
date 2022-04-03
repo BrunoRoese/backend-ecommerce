@@ -1,8 +1,8 @@
-package com.brunoproject.ecommerce.controller;
+package com.brunoproject.ecommerce.product.productcontroller;
 
-import com.brunoproject.ecommerce.converter.ProductConverter;
+import com.brunoproject.ecommerce.product.productconverter.ProductConverter;
 import com.brunoproject.ecommerce.entities.Product;
-import com.brunoproject.ecommerce.productservice.ProductService;
+import com.brunoproject.ecommerce.product.productservice.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

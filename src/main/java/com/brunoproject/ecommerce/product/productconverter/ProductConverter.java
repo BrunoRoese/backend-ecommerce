@@ -1,6 +1,6 @@
-package com.brunoproject.ecommerce.converter;
+package com.brunoproject.ecommerce.product.productconverter;
 
-import com.brunoproject.ecommerce.controller.ProductDto;
+import com.brunoproject.ecommerce.product.productcontroller.ProductDto;
 import com.brunoproject.ecommerce.entities.Product;
 
 import java.util.List;
