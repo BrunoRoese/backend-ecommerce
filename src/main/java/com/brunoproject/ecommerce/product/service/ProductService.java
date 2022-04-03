@@ -38,10 +38,10 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public void updateProduct(Long id, Product informationToUpdate) {
+    public Product updateProduct(Long id, Product informationToUpdate) {
         Product productBeingUpdated = verifyIfProductExists(id);
 
-        productRepository.save(productUpdater.saveProductWithNewValues(productBeingUpdated, informationToUpdate));
+        return productRepository.save(productUpdater.saveProductWithNewValues(productBeingUpdated, informationToUpdate));
     }
 
     public void toggleActivationProduct(Long id) {
