@@ -37,8 +37,10 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public void updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
-        productService.updateProduct(id, product);
+    public ProductDto updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
+        var productUpdated = productService.updateProduct(id, product);
+
+        return productConverter.convertSingleProduct(product);
     }
 
     @PatchMapping("/{id}")
