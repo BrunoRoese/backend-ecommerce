@@ -18,16 +18,16 @@ public class ProductService {
     private final ProductUpdater productUpdater;
 
     public List<Product> getAllActiveProducts() {
-         var productList = productRepository.findAll()
-                 .stream()
-                 .filter(Product::isActive)
-                 .collect(Collectors.toList());
+        var productList = productRepository.findAll()
+                .stream()
+                .filter(Product::isActive)
+                .collect(Collectors.toList());
 
-         if (productList.isEmpty()) {
-             throw new ProductListIsEmptyException();
-         }
+        if (productList.isEmpty()) {
+            throw new ProductListIsEmptyException();
+        }
 
-         return productList;
+        return productList;
     }
 
     public Product getProduct(Long id) {
@@ -53,7 +53,7 @@ public class ProductService {
     }
 
     public void deleteProduct(Long id) {
-        if(productRepository.existsById(id)) {
+        if (productRepository.existsById(id)) {
             productRepository.deleteById(id);
         } else {
             throw new ProductNotFoundException();

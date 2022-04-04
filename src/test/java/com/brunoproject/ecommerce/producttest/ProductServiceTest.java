@@ -7,7 +7,6 @@ import com.brunoproject.ecommerce.product.service.ProductService;
 import com.brunoproject.ecommerce.product.service.ProductUpdater;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.io.TempDir;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -86,7 +85,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void shouldUpdateProduct(){
+    public void shouldUpdateProduct() {
         var product = mock(Product.class);
         var listOfProducts = List.of(product);
         var informationToUpdateProduct = mock(Product.class);
