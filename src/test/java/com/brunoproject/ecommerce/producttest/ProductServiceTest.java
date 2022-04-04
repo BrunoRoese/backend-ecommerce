@@ -101,4 +101,19 @@ public class ProductServiceTest {
         verify(productRepository).findAll();
         assertEquals(informationToUpdateProduct, result);
     }
+
+    @Test
+    public void shouldActivateProduct() {
+        var productBeingActivated = mock(Product.class);
+        var productList = List.of(productBeingActivated);
+
+        given(productBeingActivated.getId()).willReturn(1L);
+        given(productRepository.findAll()).willReturn(productList);
+        given(productBeingActivated.isActive()).willReturn(false);
+        given(productRepository.save(productBeingActivated)).willReturn(productBeingActivated);
+
+        productService.toggleActivationProduct(1L);
+
+        assertFalse(productBeingActivated.isActive());
+    }
 }
