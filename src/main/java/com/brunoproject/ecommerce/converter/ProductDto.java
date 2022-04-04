@@ -14,4 +14,5 @@ public class ProductDto {
     private String description;
     private BigDecimal unitPrice;
     private String imageUrl;
+    private boolean active;
 }

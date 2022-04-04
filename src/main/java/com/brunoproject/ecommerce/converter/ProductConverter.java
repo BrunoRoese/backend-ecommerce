@@ -1,7 +1,6 @@
 package com.brunoproject.ecommerce.converter;
 
 import com.brunoproject.ecommerce.entities.Product;
-import org.springframework.data.convert.WritingConverter;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,6 +28,7 @@ public class ProductConverter {
         productDto.setDescription(product.getDescription());
         productDto.setUnitPrice(product.getUnitPrice());
         productDto.setImageUrl(product.getImageUrl());
+        productDto.setActive(productDto.isActive());
 
         return productDto;
     }
