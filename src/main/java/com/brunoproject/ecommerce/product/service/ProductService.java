@@ -53,11 +53,9 @@ public class ProductService {
     }
 
     public void deleteProduct(Long id) {
-        if (productRepository.existsById(id)) {
-            productRepository.deleteById(id);
-        } else {
-            throw new ProductNotFoundException();
-        }
+        var product = verifyIfProductExists(id);
+
+        productRepository.deleteById(product.getId());
     }
 
     private Product verifyIfProductExists(Long id) {
