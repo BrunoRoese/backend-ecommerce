@@ -32,20 +32,18 @@ public class ProductController {
     }
 
     @PostMapping()
-    public void createProduct(@RequestBody Product product) {
-        productService.createProduct(product);
+    public Product createProduct(@RequestBody Product product) {
+        return productService.createProduct(product);
     }
 
     @PutMapping("/{id}")
-    public ProductDto updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
-        var productUpdated = productService.updateProduct(id, product);
-
-        return productConverter.convertSingleProduct(product);
+    public Product updateProduct(@PathVariable("id") Long id, @RequestBody Product product) {
+        return productService.updateProduct(id, product);
     }
 
     @PatchMapping("/{id}")
-    public void toggleActivationProduct(@PathVariable("id") Long id) {
-        productService.toggleActivationProduct(id);
+    public Product toggleActivationProduct(@PathVariable("id") Long id) {
+        return productService.toggleActivationProduct(id);
     }
 
     @DeleteMapping("/{id}")

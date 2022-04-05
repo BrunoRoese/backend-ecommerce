@@ -44,12 +44,12 @@ public class ProductService {
         return productRepository.save(productUpdater.saveProductWithNewValues(productBeingUpdated, informationToUpdate));
     }
 
-    public void toggleActivationProduct(Long id) {
+    public Product toggleActivationProduct(Long id) {
         Product productBeingUpdated = verifyIfProductExists(id);
 
         productBeingUpdated.setActive(!productBeingUpdated.isActive());
 
-        productRepository.save(productBeingUpdated);
+        return productRepository.save(productBeingUpdated);
     }
 
     public void deleteProduct(Long id) {
