@@ -16,6 +16,7 @@ import java.util.List;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
 public class ProductControllerTest {
@@ -37,6 +38,23 @@ public class ProductControllerTest {
 
         var result = productController.getAllProducts();
 
+        verify(productService).getAllActiveProducts();
+        verify(productConverter).convertListOfProducts(listOfProducts);
         assertEquals(result, listOfConvertedProducts);
+    }
+
+    @Test
+    public void shouldGetSelectedProduct() {
+        var product = mock(Product.class);
+        var convertedProduct = mock(ProductDto.class);
+
+        given(productService.getProduct(1L)).willReturn(product);
+        given(productConverter.convertSingleProduct(product)).willReturn(convertedProduct);
+
+        var result = productController.getProduct(1L);
+
+        verify(productService).getProduct(1L);
+        verify(productConverter).convertSingleProduct(product);
+        assertEquals(result, convertedProduct);
     }
 }
