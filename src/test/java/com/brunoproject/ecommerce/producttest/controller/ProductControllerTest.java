@@ -57,4 +57,16 @@ public class ProductControllerTest {
         verify(productConverter).convertSingleProduct(product);
         assertEquals(result, convertedProduct);
     }
+
+    @Test
+    public void shouldCreateProduct() {
+        var product = mock(Product.class);
+
+        given(productService.createProduct(product)).willReturn(product);
+
+        var result = productController.createProduct(product);
+
+        verify(productService).createProduct(product);
+        assertEquals(result, product);
+    }
 }
