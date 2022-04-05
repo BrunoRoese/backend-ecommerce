@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.producttest;
+package com.brunoproject.ecommerce.producttest.service;
 
 import com.brunoproject.ecommerce.dao.ProductRepository;
 import com.brunoproject.ecommerce.entities.Product;
