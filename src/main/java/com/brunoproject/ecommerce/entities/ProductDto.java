@@ -1,6 +1,5 @@
-package com.brunoproject.ecommerce.converter;
+package com.brunoproject.ecommerce.entities;
 
-import com.brunoproject.ecommerce.entities.ProductCategory;
 import lombok.Data;
 
 import java.math.BigDecimal;

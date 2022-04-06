@@ -1,6 +1,7 @@
 package com.brunoproject.ecommerce.converter;
 
 import com.brunoproject.ecommerce.entities.Product;
+import com.brunoproject.ecommerce.entities.ProductDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
