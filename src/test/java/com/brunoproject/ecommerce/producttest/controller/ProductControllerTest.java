@@ -86,4 +86,16 @@ public class ProductControllerTest {
         verify(productService).updateProduct(1L, productToBeUpdated);
         assertEquals(result.getName(), productToBeUpdated.getName());
     }
+
+    @Test
+    public void shouldReturnActivatedProduct() {
+        var product = mock(Product.class);
+
+        given(productService.toggleActivationProduct(1L)).willReturn(product);
+        given(product.isActive()).willReturn(true);
+
+        var result = productController.toggleActivationProduct(1L);
+
+        assertTrue(result.isActive());
+    }
 }
