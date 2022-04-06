@@ -1,5 +1,6 @@
 package com.brunoproject.ecommerce.booktest;
 
+import com.brunoproject.ecommerce.book.exceptions.BookNotFoundException;
 import com.brunoproject.ecommerce.book.service.BookService;
 import com.brunoproject.ecommerce.dao.ProductRepository;
 import com.brunoproject.ecommerce.entities.Product;
@@ -12,9 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.mock;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class BookServiceTest {
@@ -36,5 +36,35 @@ public class BookServiceTest {
 
         verify(productRepository).findAllActiveBooks();
         assertEquals(result, bookList);
+    }
+
+    @Test
+    public void shouldGetActiveBook() {
+        var book = mock(Product.class);
+        var listOfBooks = List.of(book);
+
+        given(productRepository.findAllActiveBooks()).willReturn(listOfBooks);
+        given(book.getId()).willReturn(1L);
+
+        var result = bookService.getActiveBookById(1L);
+
+        verify(productRepository).findAllActiveBooks();
+        assertEquals(result, book);
+    }
+
+    @Test
+    public void shouldThrowExceptionIfProductIsNotFound() {
+        BookNotFoundException productNotFoundException = assertThrows(
+                BookNotFoundException.class,
+                () -> {
+                    var book = mock(Product.class);
+                    var listOfBooks = List.of(book);
+
+                    given(productRepository.findAllActiveBooks()).willReturn(listOfBooks);
+                    given(book.getId()).willReturn(2L);
+
+                    bookService.getActiveBookById(1L);
+                }
+        );
     }
 }
