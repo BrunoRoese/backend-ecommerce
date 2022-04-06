@@ -1,2 +1,13 @@
-package com.brunoproject.ecommerce.book.exceptions;public class BookNotFoundException {
+package com.brunoproject.ecommerce.book.exceptions;
+
+import com.brunoproject.ecommerce.book.service.BookService;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class BookNotFoundException extends RuntimeException {
+
+    public BookNotFoundException() {
+        super("Book not found");
+    }
 }
