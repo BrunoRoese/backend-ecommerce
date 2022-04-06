@@ -69,4 +69,21 @@ public class ProductControllerTest {
         verify(productService).createProduct(product);
         assertEquals(result, product);
     }
+
+    @Test
+    public void shouldUpdateProduct() {
+        var product = new Product();
+        var productToBeUpdated = new Product();
+
+        product.setId(1L);
+        product.setName("Product");
+        productToBeUpdated.setName("ProductToBeUpdated");
+
+        given(productService.updateProduct(1L, productToBeUpdated)).willReturn(productToBeUpdated);
+
+        var result = productController.updateProduct(1L, productToBeUpdated);
+
+        verify(productService).updateProduct(1L, productToBeUpdated);
+        assertEquals(result.getName(), productToBeUpdated.getName());
+    }
 }
