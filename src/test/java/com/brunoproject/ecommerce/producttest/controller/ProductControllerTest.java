@@ -36,7 +36,7 @@ public class ProductControllerTest {
         given(productService.getAllActiveProducts()).willReturn(listOfProducts);
         given(productConverter.convertListOfProducts(listOfProducts)).willReturn(listOfConvertedProducts);
 
-        var result = productController.getAllProducts();
+        var result = productController.getAllActiveProducts();
 
         verify(productService).getAllActiveProducts();
         verify(productConverter).convertListOfProducts(listOfProducts);

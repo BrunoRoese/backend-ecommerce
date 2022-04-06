@@ -18,7 +18,7 @@ public class ProductController {
     private final ProductConverter productConverter;
 
     @GetMapping("/active")
-    public List<ProductDto> getAllProducts() {
+    public List<ProductDto> getAllActiveProducts() {
         var products = productService.getAllActiveProducts();
 
         return productConverter.convertListOfProducts(products);

@@ -1,6 +1,5 @@
 package com.brunoproject.ecommerce.book.exceptions;
 
-import com.brunoproject.ecommerce.book.service.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
