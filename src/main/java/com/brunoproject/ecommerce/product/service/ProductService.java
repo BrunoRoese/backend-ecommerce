@@ -17,6 +17,14 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final ProductUpdater productUpdater;
 
+    public List<Product> getAllProducts() {
+        if(productRepository.findAll().isEmpty()) {
+            throw new ProductListIsEmptyException();
+        }
+
+        return productRepository.findAll();
+    }
+
     public List<Product> getAllActiveProducts() {
         var productList = productRepository.findAll()
                 .stream()
