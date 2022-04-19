@@ -23,9 +23,12 @@ public class BookService {
     }
 
     private Product verifyIfProductIsActiveAndBook(Long bookId) {
-        return productRepository.findAllActiveBooks().stream()
-                .filter(product -> product.getId().equals(bookId))
-                .findAny()
-                .orElseThrow(BookNotFoundException::new);
+        var product = productRepository.getById(bookId);
+
+        if (product.isActive()) {
+            return product;
+        }
+
+        throw new RuntimeException("Product with id " + product.getId() + " is not currently active");
     }
 }

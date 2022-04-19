@@ -17,19 +17,19 @@ import java.util.List;
 public class BookController {
 
     private BookService bookService;
-    private ProductConverter productConverter;
+    private ProductMapper productMapper;
 
     @GetMapping()
     public List<ProductDto> getBooks() {
         var books = bookService.getActiveBooks();
 
-        return productConverter.convertListOfProducts(books);
+        return productMapper.convertListOfProducts(books);
     }
 
     @GetMapping("/{bookId}")
     public ProductDto getBookById(@PathVariable Long bookId) {
         var book = bookService.getActiveBookById(bookId);
 
-        return productConverter.convertSingleProduct(book);
+        return productMapper.convertSingleProduct(book);
     }
 }

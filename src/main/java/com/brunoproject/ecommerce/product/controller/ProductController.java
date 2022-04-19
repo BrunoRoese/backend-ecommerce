@@ -15,25 +15,25 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-    private final ProductConverter productConverter;
+    private final ProductMapper productMapper;
 
     @GetMapping
     public List<ProductDto> getAllProducts() {
-        return productConverter.convertListOfProducts(productService.getAllProducts());
+        return productMapper.convertListOfProducts(productService.getAllProducts());
     }
 
     @GetMapping("/active")
     public List<ProductDto> getAllActiveProducts() {
         var products = productService.getAllActiveProducts();
 
-        return productConverter.convertListOfProducts(products);
+        return productMapper.convertListOfProducts(products);
     }
 
     @GetMapping("/{id}")
     public ProductDto getProduct(@PathVariable("id") Long id) {
         var product = productService.getProduct(id);
 
-        return productConverter.convertSingleProduct(product);
+        return productMapper.convertSingleProduct(product);
     }
 
     @PostMapping()

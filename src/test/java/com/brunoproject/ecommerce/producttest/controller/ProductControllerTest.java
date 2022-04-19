@@ -26,7 +26,7 @@ public class ProductControllerTest {
     @Mock
     private ProductService productService;
     @Mock
-    private ProductConverter productConverter;
+    private ProductMapper productMapper;
 
     @Test
     public void shouldReturnAListOfCovertedProducts() {
@@ -34,12 +34,12 @@ public class ProductControllerTest {
         var listOfConvertedProducts = List.of(mock(ProductDto.class), mock(ProductDto.class));
 
         given(productService.getAllActiveProducts()).willReturn(listOfProducts);
-        given(productConverter.convertListOfProducts(listOfProducts)).willReturn(listOfConvertedProducts);
+        given(productMapper.convertListOfProducts(listOfProducts)).willReturn(listOfConvertedProducts);
 
         var result = productController.getAllActiveProducts();
 
         verify(productService).getAllActiveProducts();
-        verify(productConverter).convertListOfProducts(listOfProducts);
+        verify(productMapper).convertListOfProducts(listOfProducts);
         assertEquals(result, listOfConvertedProducts);
     }
 
@@ -49,12 +49,12 @@ public class ProductControllerTest {
         var convertedProduct = mock(ProductDto.class);
 
         given(productService.getProduct(1L)).willReturn(product);
-        given(productConverter.convertSingleProduct(product)).willReturn(convertedProduct);
+        given(productMapper.convertSingleProduct(product)).willReturn(convertedProduct);
 
         var result = productController.getProduct(1L);
 
         verify(productService).getProduct(1L);
-        verify(productConverter).convertSingleProduct(product);
+        verify(productMapper).convertSingleProduct(product);
         assertEquals(result, convertedProduct);
     }
 
