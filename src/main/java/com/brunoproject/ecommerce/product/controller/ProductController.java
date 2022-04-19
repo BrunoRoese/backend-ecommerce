@@ -1,6 +1,6 @@
 package com.brunoproject.ecommerce.product.controller;
 
-import com.brunoproject.ecommerce.converter.ProductConverter;
+import com.brunoproject.ecommerce.mapper.ProductMapper;
 import com.brunoproject.ecommerce.entities.Product;
 import com.brunoproject.ecommerce.entities.ProductDto;
 import com.brunoproject.ecommerce.product.service.ProductService;

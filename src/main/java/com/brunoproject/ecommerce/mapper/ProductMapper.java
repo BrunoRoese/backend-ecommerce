@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.converter;
+package com.brunoproject.ecommerce.mapper;
 
 import com.brunoproject.ecommerce.entities.Product;
 import com.brunoproject.ecommerce.entities.ProductDto;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ProductConverter {
+public class ProductMapper {
 
     public List<ProductDto> convertListOfProducts(List<Product> productList) {
         return productList.stream()

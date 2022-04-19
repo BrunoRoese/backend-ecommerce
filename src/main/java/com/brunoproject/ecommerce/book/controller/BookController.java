@@ -1,7 +1,7 @@
 package com.brunoproject.ecommerce.book.controller;
 
 import com.brunoproject.ecommerce.book.service.BookService;
-import com.brunoproject.ecommerce.converter.ProductConverter;
+import com.brunoproject.ecommerce.mapper.ProductMapper;
 import com.brunoproject.ecommerce.entities.ProductDto;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
