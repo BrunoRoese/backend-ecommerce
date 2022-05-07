@@ -1,9 +1,8 @@
-package com.brunoproject.ecommerce.product.controller;
+package com.brunoproject.ecommerce.Product.controller;
 
-import com.brunoproject.ecommerce.mapper.ProductMapper;
-import com.brunoproject.ecommerce.entities.Product;
-import com.brunoproject.ecommerce.entities.ProductDto;
-import com.brunoproject.ecommerce.product.service.ProductService;
+import com.brunoproject.ecommerce.ProductEntities.Product;
+import com.brunoproject.ecommerce.ProductEntities.ProductDto;
+import com.brunoproject.ecommerce.Product.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,25 +14,20 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-    private final ProductMapper productMapper;
 
     @GetMapping
     public List<ProductDto> getAllProducts() {
-        return productMapper.convertListOfProducts(productService.getAllProducts());
+        return productService.getAllProducts();
     }
 
     @GetMapping("/active")
     public List<ProductDto> getAllActiveProducts() {
-        var products = productService.getAllActiveProducts();
-
-        return productMapper.convertListOfProducts(products);
+        return productService.getAllActiveProducts();
     }
 
     @GetMapping("/{id}")
     public ProductDto getProduct(@PathVariable("id") Long id) {
-        var product = productService.getProduct(id);
-
-        return productMapper.convertSingleProduct(product);
+        return productService.getProduct(id);
     }
 
     @PostMapping()

@@ -1,7 +1,7 @@
-package com.brunoproject.ecommerce.mapper;
+package com.brunoproject.ecommerce.Mapper;
 
-import com.brunoproject.ecommerce.entities.Product;
-import com.brunoproject.ecommerce.entities.ProductDto;
+import com.brunoproject.ecommerce.ProductEntities.Product;
+import com.brunoproject.ecommerce.ProductEntities.ProductDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
