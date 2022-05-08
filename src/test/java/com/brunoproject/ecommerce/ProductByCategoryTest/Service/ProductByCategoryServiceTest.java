@@ -1,15 +1,17 @@
 package com.brunoproject.ecommerce.ProductByCategoryTest.Service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 import com.brunoproject.ecommerce.Mapper.ProductMapper;
+import com.brunoproject.ecommerce.Product.exceptions.ProductNotFoundException;
+import com.brunoproject.ecommerce.ProductCategory.exceptions.ProductCategoryIsEmpty;
 import com.brunoproject.ecommerce.ProductCategory.service.ProductByCategoryService;
 import com.brunoproject.ecommerce.ProductDao.ProductRepository;
 import com.brunoproject.ecommerce.ProductEntities.Product;
-import com.brunoproject.ecommerce.ProductEntities.ProductCategory;
 import com.brunoproject.ecommerce.ProductEntities.ProductDto;
 import java.util.List;
 import java.util.Optional;
@@ -45,6 +47,18 @@ public class ProductByCategoryServiceTest {
         verify(productRepository).findAllByProductCategoryId(1L);
         verify(productMapper).convertListOfProducts(productList);
         assertEquals(result, convertedProductList);
+    }
+
+    @Test
+    public void shouldThrowProductCategoryIsEmptyException() {
+        ProductCategoryIsEmpty productCategoryIsEmpty = assertThrows(
+                ProductCategoryIsEmpty.class,
+                () -> {
+                    given(productRepository.findAllByProductCategoryId(1L)).willReturn(Optional.empty());
+
+                    productByCategoryService.getAllProductByCategory(1L);
+                }
+        );
     }
 
     @Test
