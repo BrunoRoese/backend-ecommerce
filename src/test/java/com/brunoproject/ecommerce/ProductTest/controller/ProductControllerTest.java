@@ -1,10 +1,9 @@
-package com.brunoproject.ecommerce.producttest.controller;
+package com.brunoproject.ecommerce.ProductTest.controller;
 
-import com.brunoproject.ecommerce.mapper.ProductMapper;
-import com.brunoproject.ecommerce.entities.ProductDto;
-import com.brunoproject.ecommerce.entities.Product;
-import com.brunoproject.ecommerce.product.controller.ProductController;
-import com.brunoproject.ecommerce.product.service.ProductService;
+import com.brunoproject.ecommerce.ProductEntities.ProductDto;
+import com.brunoproject.ecommerce.ProductEntities.Product;
+import com.brunoproject.ecommerce.Product.controller.ProductController;
+import com.brunoproject.ecommerce.Product.service.ProductService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -23,39 +22,32 @@ public class ProductControllerTest {
 
     @InjectMocks
     private ProductController productController;
+
     @Mock
     private ProductService productService;
-    @Mock
-    private ProductMapper productMapper;
 
     @Test
     public void shouldReturnAListOfCovertedProducts() {
-        var listOfProducts = List.of(mock(Product.class), mock(Product.class));
         var listOfConvertedProducts = List.of(mock(ProductDto.class), mock(ProductDto.class));
 
-        given(productService.getAllActiveProducts()).willReturn(listOfProducts);
-        given(productMapper.convertListOfProducts(listOfProducts)).willReturn(listOfConvertedProducts);
+        given(productService.getAllActiveProducts()).willReturn(listOfConvertedProducts);
 
         var result = productController.getAllActiveProducts();
 
         verify(productService).getAllActiveProducts();
-        verify(productMapper).convertListOfProducts(listOfProducts);
         assertEquals(result, listOfConvertedProducts);
     }
 
     @Test
     public void shouldGetSelectedProduct() {
-        var product = mock(Product.class);
-        var convertedProduct = mock(ProductDto.class);
+        var productDto = mock(ProductDto.class);
 
-        given(productService.getProduct(1L)).willReturn(product);
-        given(productMapper.convertSingleProduct(product)).willReturn(convertedProduct);
+        given(productService.getProduct(1L)).willReturn(productDto);
 
         var result = productController.getProduct(1L);
 
         verify(productService).getProduct(1L);
-        verify(productMapper).convertSingleProduct(product);
-        assertEquals(result, convertedProduct);
+        assertEquals(result, productDto);
     }
 
     @Test
