@@ -11,6 +11,8 @@ import com.brunoproject.ecommerce.ProductDao.ProductRepository;
 import com.brunoproject.ecommerce.ProductEntities.Product;
 import com.brunoproject.ecommerce.ProductEntities.ProductDto;
 import java.util.List;
+import java.util.Optional;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -34,7 +36,7 @@ public class ProductByCategoryServiceTest {
         var productList = List.of(product);
         var convertedProductList = List.of(mock(ProductDto.class));
 
-        given(productRepository.findAllByProductCategoryId(1L)).willReturn(productList);
+        given(productRepository.findAllByProductCategoryId(1L)).willReturn(Optional.of(productList));
         given(productMapper.convertListOfProducts(productList)).willReturn(convertedProductList);
 
         var result = productByCategoryService.getAllProductByCategory(1L);

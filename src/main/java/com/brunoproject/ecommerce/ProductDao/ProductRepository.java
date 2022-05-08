@@ -5,12 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
+    Optional<List<Product>> findAllByProductCategoryId(Long productCategoryId);
 
-    @Query(value = "select * from product where category_id = 1 and active = 1",
-            nativeQuery = true)
-    List<Product> findAllActiveBooks();
-
-    List<Product> findAllByProductCategoryId(Long productCategoryId);
+    Optional<Product> findProductByIdAndProductCategoryId(Long productId, Long productCategoryId);
 }
