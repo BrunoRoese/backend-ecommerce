@@ -73,4 +73,16 @@ public class ProductByCategoryServiceTest {
 
         assertEquals(result, productDto);
     }
+
+    @Test
+    public void shouldThrowProductNotFoundExceptionIfDoesntFindAnyProduct() {
+        ProductNotFoundException productNotFoundException = assertThrows(
+                ProductNotFoundException.class,
+                () -> {
+                    given(productRepository.findProductByIdAndProductCategoryId(1L,1L)).willReturn(Optional.empty());
+
+                    productByCategoryService.getSpecificProductByCategory(1L,1L);
+                }
+        );
+    }
 }
