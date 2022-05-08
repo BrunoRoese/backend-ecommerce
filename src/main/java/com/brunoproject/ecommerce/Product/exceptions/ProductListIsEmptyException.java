@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.product.exceptions;
+package com.brunoproject.ecommerce.Product.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

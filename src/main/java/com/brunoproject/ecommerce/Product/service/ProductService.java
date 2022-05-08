@@ -1,9 +1,11 @@
-package com.brunoproject.ecommerce.product.service;
+package com.brunoproject.ecommerce.Product.service;
 
-import com.brunoproject.ecommerce.dao.ProductRepository;
-import com.brunoproject.ecommerce.entities.Product;
-import com.brunoproject.ecommerce.product.exceptions.ProductListIsEmptyException;
-import com.brunoproject.ecommerce.product.exceptions.ProductNotFoundException;
+import com.brunoproject.ecommerce.ProductEntities.ProductDto;
+import com.brunoproject.ecommerce.Mapper.ProductMapper;
+import com.brunoproject.ecommerce.ProductDao.ProductRepository;
+import com.brunoproject.ecommerce.ProductEntities.Product;
+import com.brunoproject.ecommerce.Product.exceptions.ProductListIsEmptyException;
+import com.brunoproject.ecommerce.Product.exceptions.ProductNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +18,17 @@ public class ProductService {
 
     private final ProductRepository productRepository;
     private final ProductUpdater productUpdater;
+    private final ProductMapper productMapper;
 
-    public List<Product> getAllProducts() {
+    public List<ProductDto> getAllProducts() {
         if(productRepository.findAll().isEmpty()) {
             throw new ProductListIsEmptyException();
         }
 
-        return productRepository.findAll();
+        return productMapper.convertListOfProducts(productRepository.findAll());
     }
 
-    public List<Product> getAllActiveProducts() {
+    public List<ProductDto> getAllActiveProducts() {
         var productList = productRepository.findAll()
                 .stream()
                 .filter(Product::isActive)
@@ -35,11 +38,11 @@ public class ProductService {
             throw new ProductListIsEmptyException();
         }
 
-        return productList;
+        return productMapper.convertListOfProducts(productList);
     }
 
-    public Product getProduct(Long id) {
-        return verifyIfProductExists(id);
+    public ProductDto getProduct(Long id) {
+        return productMapper.convertSingleProduct(verifyIfProductExists(id));
     }
 
     public Product createProduct(Product product) {
