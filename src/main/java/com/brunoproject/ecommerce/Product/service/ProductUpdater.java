@@ -1,6 +1,6 @@
-package com.brunoproject.ecommerce.product.service;
+package com.brunoproject.ecommerce.Product.service;
 
-import com.brunoproject.ecommerce.entities.Product;
+import com.brunoproject.ecommerce.ProductEntities.Product;
 import org.springframework.stereotype.Service;
 
 @Service
