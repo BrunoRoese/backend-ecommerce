@@ -9,6 +9,7 @@ import com.brunoproject.ecommerce.Mapper.ProductMapper;
 import com.brunoproject.ecommerce.ProductCategory.service.ProductByCategoryService;
 import com.brunoproject.ecommerce.ProductDao.ProductRepository;
 import com.brunoproject.ecommerce.ProductEntities.Product;
+import com.brunoproject.ecommerce.ProductEntities.ProductCategory;
 import com.brunoproject.ecommerce.ProductEntities.ProductDto;
 import java.util.List;
 import java.util.Optional;
@@ -44,5 +45,18 @@ public class ProductByCategoryServiceTest {
         verify(productRepository).findAllByProductCategoryId(1L);
         verify(productMapper).convertListOfProducts(productList);
         assertEquals(result, convertedProductList);
+    }
+
+    @Test
+    public void shouldReturnSpecificProductBasedOnHisId() {
+        var product = mock(Product.class);
+        var productDto = mock(ProductDto.class);
+
+        given(productRepository.findProductByIdAndProductCategoryId(1L,1L)).willReturn(Optional.of(product));
+        given(productMapper.convertSingleProduct(product)).willReturn(productDto);
+
+        var result = productByCategoryService.getSpecificProductByCategory(1L,1L);
+
+        assertEquals(result, productDto);
     }
 }
