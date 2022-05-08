@@ -22,6 +22,16 @@ public class ProductByCategoryService {
             throw new ProductCategoryIsEmpty();
         }
 
-        return productMapper.convertListOfProducts(productsByCategory);
+        return productMapper.convertListOfProducts(productsByCategory.get());
+    }
+
+    public ProductDto getSpecificProductByCategory(Long productCategoryId, Long productId){
+        var product = productRepository.findProductByIdAndProductCategoryId(productId, productCategoryId);
+
+        if(product.isEmpty()) {
+            throw new ProductNotFoundException();
+        }
+
+        return productMapper.convertSingleProduct(product.get());
     }
 }
