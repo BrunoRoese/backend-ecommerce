@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.entities;
+package com.brunoproject.ecommerce.ProductEntities;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
