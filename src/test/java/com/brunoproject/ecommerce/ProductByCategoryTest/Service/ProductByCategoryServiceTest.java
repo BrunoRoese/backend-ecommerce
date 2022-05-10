@@ -6,7 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-import com.brunoproject.ecommerce.Mapper.ProductMapper;
+import com.brunoproject.ecommerce.ProductUtils.Mapper.ProductMapper;
 import com.brunoproject.ecommerce.Product.exceptions.ProductNotFoundException;
 import com.brunoproject.ecommerce.ProductCategory.exceptions.ProductCategoryIsEmpty;
 import com.brunoproject.ecommerce.ProductCategory.service.ProductByCategoryService;

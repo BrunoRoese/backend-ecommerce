@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.Mapper;
+package com.brunoproject.ecommerce.ProductUtils.Mapper;
 
 import com.brunoproject.ecommerce.ProductEntities.Product;
 import com.brunoproject.ecommerce.ProductEntities.ProductDto;
