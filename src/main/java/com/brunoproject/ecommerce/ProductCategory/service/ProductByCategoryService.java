@@ -1,10 +1,9 @@
 package com.brunoproject.ecommerce.ProductCategory.service;
 
-import com.brunoproject.ecommerce.Mapper.ProductMapper;
+import com.brunoproject.ecommerce.ProductUtils.Mapper.ProductMapper;
 import com.brunoproject.ecommerce.Product.exceptions.ProductNotFoundException;
 import com.brunoproject.ecommerce.ProductCategory.exceptions.ProductCategoryIsEmpty;
-import com.brunoproject.ecommerce.ProductCategory.exceptions.ProductCategoryNotFound;
-import com.brunoproject.ecommerce.ProductCategory.productCategoryUpdater.ProductCategoryUpdater;
+import com.brunoproject.ecommerce.ProductUtils.Updater.ProductCategoryUpdater;
 import com.brunoproject.ecommerce.ProductDao.ProductCategoryRepository;
 import com.brunoproject.ecommerce.ProductDao.ProductRepository;
 import com.brunoproject.ecommerce.ProductEntities.ProductCategory;

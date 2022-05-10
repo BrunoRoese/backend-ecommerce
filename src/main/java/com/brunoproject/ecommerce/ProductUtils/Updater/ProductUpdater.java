@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.Product.productUpdater;
+package com.brunoproject.ecommerce.ProductUtils.Updater;
 
 import com.brunoproject.ecommerce.ProductEntities.Product;
 import org.springframework.stereotype.Service;

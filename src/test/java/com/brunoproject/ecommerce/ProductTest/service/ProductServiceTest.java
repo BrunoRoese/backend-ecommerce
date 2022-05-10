@@ -1,12 +1,12 @@
 package com.brunoproject.ecommerce.ProductTest.service;
 
 import com.brunoproject.ecommerce.ProductEntities.ProductDto;
-import com.brunoproject.ecommerce.Mapper.ProductMapper;
+import com.brunoproject.ecommerce.ProductUtils.Mapper.ProductMapper;
 import com.brunoproject.ecommerce.ProductDao.ProductRepository;
 import com.brunoproject.ecommerce.ProductEntities.Product;
 import com.brunoproject.ecommerce.Product.exceptions.ProductNotFoundException;
 import com.brunoproject.ecommerce.Product.service.ProductService;
-import com.brunoproject.ecommerce.Product.productUpdater.ProductUpdater;
+import com.brunoproject.ecommerce.ProductUtils.Updater.ProductUpdater;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

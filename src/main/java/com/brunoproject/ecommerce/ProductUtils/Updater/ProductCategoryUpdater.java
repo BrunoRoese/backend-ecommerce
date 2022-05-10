@@ -1,4 +1,4 @@
-package com.brunoproject.ecommerce.ProductCategory.productCategoryUpdater;
+package com.brunoproject.ecommerce.ProductUtils.Updater;
 
 import com.brunoproject.ecommerce.ProductCategory.exceptions.ProductCategoryNotFound;
 import com.brunoproject.ecommerce.ProductDao.ProductCategoryRepository;
