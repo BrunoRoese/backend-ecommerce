@@ -1,5 +1,6 @@
 package com.brunoproject.ecommerce.Product.service;
 
+import com.brunoproject.ecommerce.Product.productUpdater.ProductUpdater;
 import com.brunoproject.ecommerce.ProductEntities.ProductDto;
 import com.brunoproject.ecommerce.Mapper.ProductMapper;
 import com.brunoproject.ecommerce.ProductDao.ProductRepository;
