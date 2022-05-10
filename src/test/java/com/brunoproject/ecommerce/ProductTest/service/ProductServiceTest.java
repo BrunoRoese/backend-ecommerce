@@ -6,7 +6,7 @@ import com.brunoproject.ecommerce.ProductDao.ProductRepository;
 import com.brunoproject.ecommerce.ProductEntities.Product;
 import com.brunoproject.ecommerce.Product.exceptions.ProductNotFoundException;
 import com.brunoproject.ecommerce.Product.service.ProductService;
-import com.brunoproject.ecommerce.Product.service.ProductUpdater;
+import com.brunoproject.ecommerce.Product.productUpdater.ProductUpdater;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
